@@ -13,6 +13,8 @@ Currently discussion is in this github issue:
 
 Please use this [issue tracker](https://github.com/WICG/display-override/issues) to record any issues or feedback. 
 
+Intent-to-Prototype email: https://groups.google.com/a/chromium.org/g/blink-dev/c/WvIeZT8uSzw
+
 # Introduction
 
 New display modes are being proposed, and the current way of specifying a display mode in the manifest has a [static fallback chain](https://w3c.github.io/manifest/#display-modes), which can:
