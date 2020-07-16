@@ -202,7 +202,11 @@ The developer prefers `minimal-ui` but can settle for `standalone`.
 }
 ```
 
+**Why is this not currently possible?**
 
+Without `display_override`, Setting `minimal-ui` as the `display` property will
+ * give the WebApp `minimal-ui` on browsers that support it, BUT
+ * force the WebApp into the `browser` display mode (which makes it not a WebApp anymore, it just opens in a tab), as that is the next display mode in the fallback chain.
 
 ## 2) Multi-document application
 
@@ -216,11 +220,15 @@ A webapp that only wants a dedicated window if there can be tabs.
 }
 ```
 
+**Why does `display` not work for this use case?**
 
+If `tabbed` (and `window-control-overlay-tabbed`) were added to the current `display` list (and fallback chain), it is not easy to determine where they should go.
+ * If they are near the begining (right after `fullscreen`), then an app that wants these features MUST support all display modes below that (so `standalone` & `minimal-ui`), even if their webapp doesn't work well in that environment (in this example, they need tabs).
+ * If they go near the beginning, say after `minimal-ui`, apps are forced to support these modes if the browser doesn't support `minimal-ui` (& that is what they set in their manifest).
 
 ## 3) in-app browser controls (& doesn't want `minimal-ui`)
 
-A webapp wants to display their own browser controls if they are in a window, either through the 'customized' API or in their own in-app header.
+A webapp wants to display their own browser controls if they are in a window, either through the 'customized' API or in their own in-app header. e.g. They do NOT want `minimal-ui`.
 
 
 ```json
@@ -230,7 +238,9 @@ A webapp wants to display their own browser controls if they are in a window, ei
 }
 ```
 
+**Why does `display` not work for this use case?**
 
+There is no way for the developer to tell the browser they do NOT want `minimal-ui`, however it is forced on them by the fallback list behavior.
 
 ## 4) No `minimal-ui`.
 
@@ -244,7 +254,22 @@ A webapp doesn't want `minimal-ui`.
 }
 ```
 
+## 4)  `fullscreen` or bust.
 
+A webapp only wants to be a webapp if it can be fullscreen.
+
+
+```json
+{
+  "display": "browser",
+  "display_override": ["fullscreen"],
+}
+```
+
+**Why does `display` not work for this use case?**
+`display` requires that browsers who dont support fullscreen MUST fall back to `standalone` for this use case. The web app has no way of having that not happen.
+
+This is more extreme in examples where new display modes need to be added - for example if `tabbed` mode is added after `fullscreen`, then `fullscreen` apps must expect to be in `tabbed` mode if the user agent doesn't support `fullscreen`.
 
 # Future Considerations/Ideas
 
