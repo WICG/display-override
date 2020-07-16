@@ -15,6 +15,8 @@ Please use this [issue tracker](https://github.com/WICG/display-override/issues)
 
 Intent-to-Prototype email: https://groups.google.com/a/chromium.org/g/blink-dev/c/WvIeZT8uSzw
 
+TAG Review: https://github.com/w3ctag/design-reviews/issues/530
+
 # Introduction
 
 Web apps can choose how they are displayed by setting a 'display' mode in their manifest, like so:
