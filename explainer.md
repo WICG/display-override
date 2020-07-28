@@ -17,6 +17,8 @@ Intent-to-Prototype email: https://groups.google.com/a/chromium.org/g/blink-dev/
 
 TAG Review: https://github.com/w3ctag/design-reviews/issues/530
 
+Pull request: https://github.com/w3c/manifest/pull/932
+
 # Introduction
 
 Web apps can choose how they are displayed by setting a 'display' mode in their manifest, like so:
