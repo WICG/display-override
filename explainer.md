@@ -1,6 +1,9 @@
 # Display Mode Override Proposal
 
 
+# Status:
+The spec now lives in the [WICG/manifest-incubations](https://wicg.github.io/manifest-incubations/index.html) draft spec. This document is now in **archive** mode, and will not be updated.
+
 # Authors:
 
 dmurph@chromium.org
